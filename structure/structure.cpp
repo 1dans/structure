@@ -204,9 +204,39 @@ typedef struct {
 	float rating, price;
 } Disk;
 
+int add(Disk mas[], int size) {
+	cout << "Film name\tDirector\tGenre\tRating\tPrice\n";
+	Disk film;
+	cin.ignore();
+	getline(cin, film.name);
+	getline(cin, film.director);
+	getline(cin, film.genre);
+	cin >> film.rating;
+	cin >> film.price;
+	cin.ignore();
+	mas[size++] = film;
+	return size++;
+}
+
+void show(Disk mas[], int size) {
+	for (int i = 0; i < size; ++i) cout << mas[i].name << ' ' << mas[i].director << ' ' << mas[i].genre << ' ' << mas[i].rating << ' ' << mas[i].price << endl;
+}
+
 int main() {
-	Disk mas[50];
-	cout << "Add film - 1\nShow all films - 2\nSearch film by name - 3\nSearch films by genre - 4\nMost popular film - 5\nYour choice: ";
-	
+	const int size = 50;
+	Disk mas[size];
+	int s = 0;
+	cout << "Add film - 1\nShow all films - 2\nSearch film by name - 3\nSearch films by genre - 4\nMost popular film - 5\n";
+	mas[0] = { "Spider-man", "Sam Raimi", "Action", 8.3, 5.5 };
+	int ans=1;
+	while (ans != 0) {
+		cout << "your choice:";
+		cin >> ans;
+		switch (ans) {
+		case 1: s = add(mas, s); break;
+		case 2: show(mas, s); break;
+		default: break;
+		}
+	}
 	return 0;
 }
