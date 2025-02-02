@@ -205,36 +205,96 @@ typedef struct {
 } Disk;
 
 int add(Disk mas[], int size) {
-	cout << "Film name\tDirector\tGenre\tRating\tPrice\n";
+	size++;
 	Disk film;
 	cin.ignore();
+	cout << "Film name: ";
 	getline(cin, film.name);
+	cout << "Director: ";
 	getline(cin, film.director);
+	cout << "Genre: ";
 	getline(cin, film.genre);
+	cout << "Rating: ";
 	cin >> film.rating;
+	cout << "Price: ";
 	cin >> film.price;
 	cin.ignore();
-	mas[size++] = film;
-	return size++;
+	mas[size] = film;
+	return size;
 }
 
 void show(Disk mas[], int size) {
+	size++;
 	for (int i = 0; i < size; ++i) cout << mas[i].name << ' ' << mas[i].director << ' ' << mas[i].genre << ' ' << mas[i].rating << ' ' << mas[i].price << endl;
+}
+
+void searchName(Disk mas[], int size) {
+	size++;
+	cout << "Enter name: ";
+	string name;
+	cin.ignore();
+	getline(cin, name);
+	for (int i = 0; i < size; ++i) {
+		if (name == mas[i].name) { 
+			cout << "The film you searched for: " << mas[i].name << ' ' << mas[i].director << ' ' << mas[i].genre << ' ' << mas[i].rating << ' ' << mas[i].price << endl; 
+			return; 
+		}	
+	}
+}
+
+void searchGenre(Disk mas[], int size) {
+	size++;
+	cout << "Enter genre: ";
+	string genre;
+	cin.ignore();
+	getline(cin, genre);
+	for (int i = 0; i < size; ++i) {
+		if (genre == mas[i].genre) cout << "The film you searched for: " << mas[i].name << ' ' << mas[i].director << ' ' << mas[i].genre << ' ' << mas[i].rating << ' ' << mas[i].price << endl;
+		
+	}
+}
+
+void mostPopular(Disk mas[], int size) {
+	size++;
+	int max = 0, index = -1;
+	for (int i = 0; i < size; ++i) {
+		if (mas[i].rating >= max) { 
+			max = mas[i].rating;
+			index = i;
+		}
+	}
+	if (index != -1) cout << "The most popular film is: " << mas[index].name << ' ' << mas[index].director << ' ' << mas[index].genre << ' ' << mas[index].rating << ' ' << mas[index].price << endl;
+	else cout << "There're no films in the list";
+}
+
+void searchDirector(Disk mas[], int size) {
+	size++;
+	cout << "Enter director: ";
+	string director;
+	cin.ignore();
+	getline(cin, director);
+	for (int i = 0; i < size; ++i) {
+		if (director == mas[i].director) cout << "The film you searched for: " << mas[i].name << ' ' << mas[i].director << ' ' << mas[i].genre << ' ' << mas[i].rating << ' ' << mas[i].price << endl;
+	}
 }
 
 int main() {
 	const int size = 50;
 	Disk mas[size];
 	int s = 0;
-	cout << "Add film - 1\nShow all films - 2\nSearch film by name - 3\nSearch films by genre - 4\nMost popular film - 5\n";
+	cout << "Add film - 1\nShow all films - 2\nSearch film by name - 3\nSearch films by genre - 4\nMost popular film - 5\nSearch by director - 6\n";
 	mas[0] = { "Spider-man", "Sam Raimi", "Action", 8.3, 5.5 };
 	int ans=1;
 	while (ans != 0) {
-		cout << "your choice:";
+		cout << "Your choice: ";
 		cin >> ans;
 		switch (ans) {
 		case 1: s = add(mas, s); break;
 		case 2: show(mas, s); break;
+		case 3: searchName(mas, s); break;
+		case 4: searchGenre(mas, s); break;
+		case 5: mostPopular(mas, s); break;
+		case 6: searchDirector(mas, s); break;
 		default: break;
 		}
 	}
