@@ -122,44 +122,91 @@ using namespace std;
 //	
 
 
+//typedef struct {
+//	string name;
+//	int guarantee;
+//	float price;
+//} Monitor;
+//
+//void fill (Monitor &monitor) {
+//	cout << "Enter name: ";
+//	getline(cin, monitor.name);
+//	cout << "Enter guarantee (months left): ";
+//	cin >> monitor.guarantee;
+//	cout << "Enter price: ";
+//	cin >> monitor.price;
+//	cin.ignore();
+//}
+//
+//void sortM (vector<Monitor>&mon) {
+//	for (int i = 0; i < mon.size(); ++i) {
+//		for (int j = 0; j < mon.size()-1; ++j) {
+//			if (mon[j].price > mon[j + 1].price) swap(mon[j], mon[j + 1]);
+//		}
+//	}
+//}
+//
+//int main() {
+//	int i = 0;
+//	char cont = '+';
+//	vector<Monitor> mon;
+//	do {
+//		Monitor m;
+//		fill(m);
+//		mon.push_back(m);
+//		cout << "Do you have monitors yet? +/-";
+//		cin >> cont;
+//		cin.ignore();
+//	} while (cont == '+');
+//}
+
+
+//typedef struct {
+//	bool trueOOP;
+//	bool multitask;
+//} Task;
+//
+//struct Lang {
+//	string name;
+//	int year;
+//	string author;
+//	Task object;
+//};
+//
+//typedef struct {
+//	Lang mas[3];
+//}ArLang;
+//
+//int main() {
+//	ArLang language;
+//	language.mas[0] = { "C++", 1983, "Stroustrup", {true, true} };
+//	language.mas[1].name = "C";
+//	language.mas[1].author = "Ritchie";
+//	language.mas[1].year = 1972;
+//	language.mas[1].object.multitask = true;
+//	language.mas[1].object.trueOOP = false;
+//	cout << "Enter info about Python: (name -> year creation -> author -> has OOP or not -> has multitask or not)" << endl;
+//	cin >> language.mas[2].name;
+//	cin >> language.mas[2].year;
+//	cin.ignore();
+//	getline(cin, language.mas[2].author);
+//	cin >> language.mas[2].object.trueOOP;
+//	cin >> language.mas[2].object.multitask;
+//	cin.ignore();
+//	for (int i = 0; i < 3; ++i) {
+//		cout << language.mas[i].name << ' ' << language.mas[i].year << ' ' << language.mas[i].author << ' ' << language.mas[i].object.trueOOP << ' ' << language.mas[i].object.multitask << endl;
+//	}
+//	return 0;
+//}
+
 typedef struct {
-	string name;
-	int guarantee;
-	float price;
-} Monitor;
-
-void fill (Monitor &monitor) {
-	cout << "Enter name: ";
-	getline(cin, monitor.name);
-	cout << "Enter guarantee (months left): ";
-	cin >> monitor.guarantee;
-	cout << "Enter price: ";
-	cin >> monitor.price;
-	cin.ignore();
-}
-
-void sortM (vector<Monitor>&mon) {
-	for (int i = 0; i < mon.size(); ++i) {
-		for (int j = 0; j < mon.size()-1; ++j) {
-			if (mon[j].price > mon[j + 1].price) swap(mon[j], mon[j + 1]);
-		}
-	}
-}
+	string name, director, genre;
+	float rating, price;
+} Disk;
 
 int main() {
-	int i = 0;
-	char cont = '+';
-	vector<Monitor> mon;
-	do {
-		Monitor m;
-		fill(m);
-		mon.push_back(m);
-		cout << "Do you have monitors yet? +/-";
-		cin >> cont;
-		cin.ignore();
-	} while (cont == '+');
+	Disk mas[50];
+	cout << "Add film - 1\nShow all films - 2\nSearch film by name - 3\nSearch films by genre - 4\nMost popular film - 5\nYour choice: ";
+	
+	return 0;
 }
-
-
-
-
